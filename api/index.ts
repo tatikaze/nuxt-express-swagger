@@ -12,7 +12,4 @@ app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(swaggerConfig)));
 
 app.use(router);
 
-export default {
-  path: "/api",
-  handler: app
-};
+export default app;
