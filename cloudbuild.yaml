@@ -1,5 +1,5 @@
 steps:
-- name: node:$_NODE_VERSION
+- name: node
   entrypoint: yarn
   args: ['build']
 - name: "gcr.io/cloud-builders/gcloud"
