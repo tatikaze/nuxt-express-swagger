@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/vuetify": "^1.11.2",
+    "@nuxt/typescript-build": "^2.0.3",
     "body-parser": "^1.19.0",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
@@ -21,7 +22,6 @@
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
-    "@nuxt/typescript-build": "^2.0.3",
     "@types/swagger-jsdoc": "^3.0.2",
     "@types/swagger-ui-express": "^4.1.2",
     "@vue/test-utils": "^1.1.0",
