@@ -36,3 +36,10 @@ $ yarn build
 # GAEにデプロイ
 $ gcloud app deploy app.yaml
 ```
+
+### TypeORM Migration
+
+```
+typeorm migration:generate -n {name}
+```
+```migration:create```では正しくエンティティを読み込んでくれなかった

@@ -1,10 +1,12 @@
 import { Router } from "express";
+import { User } from "../entity/User";
+import { validate } from "class-validator";
 
 export const userRouter = Router();
 
 /**
  * @swagger
- * /api/user:
+ * /api/users:
  *   post:
  *     description: aaa
  *     parameters:
@@ -19,13 +21,36 @@ export const userRouter = Router();
  *              type: string
  *   responses:
  *     200:
- *       description: aa
+ *       description: create user
  */
-userRouter.post("/", (req, res) => {
+userRouter.post("/", async (req, res) => {
   const name = req.body.name;
-  res.json({ message: "router root" + name });
+
+  const user = new User();
+  user.name = name;
+  const validateError = await validate(user);
+  if (validateError.length > 0) {
+    return res.status(400).json({ message: "invalid data" });
+  }
+  const newUser = await user.save();
+
+  return res.status(200).json({ message: "router root", data: newUser });
 });
 
-userRouter.get("/", (req, res) => {
-  res.json({ message: "test" });
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     description: get all user
+ *     responses:
+ *       200:
+ *         description: "get all user"
+ *         examples:
+ *           result:
+ *             message: string
+ *             data: {}
+ */
+userRouter.get("/", async (req, res) => {
+  const users = await User.find();
+  res.json({ message: "test", data: users });
 });
