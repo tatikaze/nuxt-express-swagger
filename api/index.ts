@@ -8,8 +8,10 @@ import { router } from "./router";
 const app = express();
 
 app.use(bodyParser.json());
+
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(swaggerConfig)));
 
+// apiルータのルートパスは/api
 app.use(router);
 
 export default app;

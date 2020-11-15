@@ -27,6 +27,7 @@ itemRouter.post("/", (req, res) => {
 });
 
 itemRouter.get("/", (req, res) => {
-  res.json({ message: "this is item get" });
+  const env = process.env.TEST
+  res.json({ message: "this is item get" + env });
 });
 
